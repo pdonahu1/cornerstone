@@ -3,6 +3,30 @@
     <head>
     <meta charset="utf-8">
     <title>Contact Us | Cornerstone Custom Brick</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "AajxFYnL5uc9w1eXN",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_tvveioi', 'template_lmbndav', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                        alert("Awesome! Your message was sent successfully");
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="article" />
@@ -185,25 +209,51 @@
                         <div class="col-md-6">
                             <div class="contact-form">
                                 <div id="success"></div>
-                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                <form name="sentMessage" id="contact-form">
                                     <div class="control-group">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Name" required="required" data-validation-required-message="Please enter your name" />
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="control-group">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email" required="required" data-validation-required-message="Please enter your email" />
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="control-group">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                        <input type="phone" name="phone" class="form-control" id="phone" placeholder="Phone" required="required" data-validation-required-message="Please enter your phone number" />
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="control-group">
-                                        <textarea class="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                        <select name="interested" class="form-control" id="phone">
+                                            <option>Service Interested In...</option>
+                                            <option value="Brick Repair Services">Brick Repair Services</option>
+                                            <option value="Brick Porch Repair Services">Brick Porch Repair</option>
+                                            <option value="Chimney Repair Services">Chimney Repair</option>
+                                            <option value="Paver Repair Services">Paver Repair</option>
+                                            <option value="Tuck Pointing Services">Tuck Pointing</option>
+                                            <option value="Half Walls Services">Half Walls</option>
+                                            <option value="Cultured Stone Services">Cultured Stone</option>
+                                            <option value="Polyurethane Sealant Services">Polyurethane Sealant</option>
+                                          </select>
                                         <p class="help-block text-danger"></p>
                                     </div>
+                                    
+                                    <div class="control-group">
+                                        <textarea class="form-control" name="message" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+
+
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="checkbox inline" name="agree-check" id="agree-check" value="Yes" required />
+                                        <label for="agree-check" class="form-check-label">
+                                          I agree to the <a href="privacy_policy.html" target="_blank" style="color:rgb(10, 10, 110);">Privacy Policy</a>
+                                        </label>
+                                      </div>
+
+
+
                                     <div>
-                                        <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
+                                        <button class="btn" type="submit">Send Message</button>
                                     </div>
                                 </form>
                             </div>
