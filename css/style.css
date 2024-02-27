@@ -762,6 +762,7 @@ text-align: center
 .feature {
     position: relative;
     margin-bottom: 45px;
+    width: 100.05%;
 }
 
 .feature .col-md-12 {
@@ -779,6 +780,7 @@ text-align: center
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    
 }
 
 .feature .feature-icon {
